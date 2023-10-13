@@ -8,7 +8,6 @@ var mouse_position
 var cam
 
 var direction
-
 var zoomScalar
 
 # Called when the node enters the scene tree for the first time.
@@ -20,20 +19,20 @@ func _ready():
 	cam = viewport.get_camera_3d()
 
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("mmb_up"):
-		mouse_position = viewport.get_mouse_position()
-
-		direction = cam.project_ray_normal(mouse_position)
-		translate(direction * zoomScalar * delta)
-
-	if Input.is_action_just_pressed("mmb_down"):
-		mouse_position = viewport.get_mouse_position()
-
-		direction = cam.project_ray_normal(mouse_position)
-		translate(-direction * zoomScalar * delta)
-	
-	position.y = clamp(position.y, 0, 20)
+#func _physics_process(delta):		
+#	if Input.is_action_just_pressed("mmb_up"):
+#		mouse_position = viewport.get_mouse_position()
+#
+#		direction = cam.project_ray_normal(mouse_position)
+#		translate(direction * zoomScalar * delta)
+#
+#	if Input.is_action_just_pressed("mmb_down"):
+#		mouse_position = viewport.get_mouse_position()
+#
+#		direction = cam.project_ray_normal(mouse_position)
+#		translate(-direction * zoomScalar * delta)
+#
+#	position.y = clamp(position.y, 0, 20)
 
 
 #func _input(event):

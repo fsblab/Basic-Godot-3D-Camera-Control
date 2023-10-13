@@ -23,4 +23,4 @@ func _process(delta):
 		translate(Vector3.RIGHT * delta * movementSpeed)
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-		rotation.y -= Input.get_last_mouse_velocity().normalized().x * delta * rotationScalar
+		rotate_y(- Input.get_last_mouse_velocity().normalized().x * delta * rotationScalar)
