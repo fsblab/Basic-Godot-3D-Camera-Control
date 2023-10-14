@@ -4,8 +4,9 @@ var speed
 var mousepos
 
 var viewport
-var mouse_position
+var mousePosition
 var cam
+var rootNode
 
 var direction
 var zoomScalar
@@ -17,31 +18,28 @@ func _ready():
 	
 	viewport = get_viewport()
 	cam = viewport.get_camera_3d()
+	
+	rootNode = get_node(get_meta("RootNode"))
 
 
-#func _physics_process(delta):		
-#	if Input.is_action_just_pressed("mmb_up"):
-#		mouse_position = viewport.get_mouse_position()
-#
-#		direction = cam.project_ray_normal(mouse_position)
-#		translate(direction * zoomScalar * delta)
-#
-#	if Input.is_action_just_pressed("mmb_down"):
-#		mouse_position = viewport.get_mouse_position()
-#
-#		direction = cam.project_ray_normal(mouse_position)
-#		translate(-direction * zoomScalar * delta)
-#
-#	position.y = clamp(position.y, 0, 20)
+#the camera moves towards or away from the mouse when scroll wheel is moved up or down
+func _physics_process(delta):
+	if Input.is_action_just_pressed("mmb_up"):
+		mousePosition = viewport.get_mouse_position()
+
+		direction = cam.project_ray_normal(mousePosition)
+		rootNode.translate(direction * zoomScalar * delta)
+
+	if Input.is_action_just_pressed("mmb_down"):
+		mousePosition = viewport.get_mouse_position()
+
+		direction = cam.project_ray_normal(mousePosition)
+		rootNode.translate(-direction * zoomScalar * delta)
+
+	position.y = clamp(position.y, 0, 20)
 
 
-#func _input(event):
-#	if event is InputEventMouseButton:
-#		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-#			translate(Vector3.DOWN * zoomScalar * .01)
-#		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-#			translate(Vector3.UP * zoomScalar * .01)
-
+#uncomment for camera to move up or down when scroll wheel is used
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

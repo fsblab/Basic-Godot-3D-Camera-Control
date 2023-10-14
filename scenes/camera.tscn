@@ -9,7 +9,7 @@ script = ExtResource("1_k84yy")
 
 [node name="ZoomIO" type="Node3D" parent="."]
 script = ExtResource("2_l0xlo")
-metadata/rootCamera = NodePath("..")
+metadata/RootNode = NodePath("..")
 
 [node name="UpDownRotation" type="Node3D" parent="ZoomIO"]
 script = ExtResource("3_xq10e")
