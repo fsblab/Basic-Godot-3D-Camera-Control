@@ -1,7 +1,5 @@
 extends Node3D
 
-var speed
-var mousepos
 
 var viewport
 var mousePosition
@@ -11,9 +9,9 @@ var rootNode
 var direction
 var zoomScalar
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = 1
 	zoomScalar = 100
 	
 	viewport = get_viewport()
@@ -24,6 +22,7 @@ func _ready():
 
 #the camera moves towards or away from the mouse when scroll wheel is moved up or down
 func _physics_process(delta):
+	# zooming in or out towards or away from the mouse arrow
 	if Input.is_action_just_pressed("mmb_up"):
 		mousePosition = viewport.get_mouse_position()
 
@@ -35,8 +34,6 @@ func _physics_process(delta):
 
 		direction = cam.project_ray_normal(mousePosition)
 		rootNode.translate(-direction * zoomScalar * delta)
-
-	position.y = clamp(position.y, 0, 20)
 
 
 #uncomment for camera to move up or down when scroll wheel is used

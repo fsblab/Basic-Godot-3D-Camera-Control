@@ -1,17 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm23r7ax0e4mf"]
 
 [ext_resource type="Script" path="res://src/CameraScript.gd" id="1_k84yy"]
-[ext_resource type="Script" path="res://src/ZoomIOScript.gd" id="2_l0xlo"]
+[ext_resource type="Script" path="res://src/ZoomInOutScript.gd" id="2_f8ags"]
 [ext_resource type="Script" path="res://src/UpDownRotationScript.gd" id="3_xq10e"]
 
 [node name="Camera" type="Node3D"]
 script = ExtResource("1_k84yy")
 
-[node name="ZoomIO" type="Node3D" parent="."]
-script = ExtResource("2_l0xlo")
+[node name="ZoomInOut" type="Node3D" parent="."]
+script = ExtResource("2_f8ags")
 metadata/RootNode = NodePath("..")
 
-[node name="UpDownRotation" type="Node3D" parent="ZoomIO"]
+[node name="Rotation" type="Node3D" parent="."]
 script = ExtResource("3_xq10e")
+metadata/RootNode = NodePath("..")
 
-[node name="Camera3D" type="Camera3D" parent="ZoomIO/UpDownRotation"]
+[node name="Camera3D" type="Camera3D" parent="Rotation"]

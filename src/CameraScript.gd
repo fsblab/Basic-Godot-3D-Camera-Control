@@ -13,6 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# WASD camera control to move the camera around
 	if Input.is_key_pressed(KEY_W):
 		translate(Vector3.FORWARD * delta * movementSpeed)
 	if Input.is_key_pressed(KEY_A):
@@ -22,5 +23,5 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_D):
 		translate(Vector3.RIGHT * delta * movementSpeed)
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-		rotate_y(- Input.get_last_mouse_velocity().normalized().x * delta * rotationScalar)
+	# restricting the height of the camera to not go below ground or too high
+	position.y = clamp(position.y, 0, 20)
