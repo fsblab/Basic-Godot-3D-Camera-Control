@@ -26,13 +26,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("mmb_up"):
 		mousePosition = viewport.get_mouse_position()
 
-		direction = cam.project_ray_normal(mousePosition)
+		direction = cam.project_local_ray_normal(mousePosition)
 		rootNode.translate(direction * zoomScalar * delta)
 
 	if Input.is_action_just_pressed("mmb_down"):
 		mousePosition = viewport.get_mouse_position()
 
-		direction = cam.project_ray_normal(mousePosition)
+		direction = cam.project_local_ray_normal(mousePosition)
 		rootNode.translate(-direction * zoomScalar * delta)
 
 
